@@ -1,0 +1,24 @@
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://avatars.dicebear.com/api/adventurer/{{current_user.icon}}.svg" class="img-fluid rounded-start" alt="avatar">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{pokemon.trainer.first_name}} You added: </h5>
+        <h3 class="card-text">{{pokemon.pokemon_name}}</h3> 
+        <p class="card-text">Ability: {{pokemon.ability}}</p>
+        <p class="card-text">Base Experience: {{pokemon.base_experience}}</p>
+        <p class="card-text">Base HP: {{pokemon.base_hp}}</p>
+        <p class="card-text">Base Defense: {{pokemon.base_defense}}</p>
+        <p class="card-text">Base Attack: {{pokemon.base_attack}}</p>
+        <p class="card-text"><img src='{{pokemon.front_shiny}}'height=75 width=75></p> 
+        <small><a href="">View My Pokemon</a></small>
+
+        {# {% if current_user.id == post.author.id %} ???
+        <small><a href="{{url_for('social.edit_post', id=post.id)}}">Edit Pokemon list</a></small> ????
+        {% endif %}#}
+      </div>
+    </div>
+  </div>
+</div>

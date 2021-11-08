@@ -1,0 +1,58 @@
+{% extends 'base.html.j2' %}
+{% block content %}
+{% for user in users %}
+    {% if user.id == current_user.id %}
+        <div class="card text-white bg-dark mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="https://avatars.dicebear.com/api/adventurer/{{user.icon}}.svg" class="img-fluid rounded-start" alt="avatar">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+            
+                <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+                <p class="card-text">Let's kick some butt!</p>
+                <p class="card-text">My Pokemon:</p> {#???????????????????????????????????????????????????????????#}
+                       {% for pokemon in pokemons %}
+                    <p class="card-text">{{pokemon.pokemon_name}}</p> 
+                     {% endfor %}     
+    
+            </div>
+            </div>
+        </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+{% for user in users %}
+    {% if not user.id == current_user.id %}
+        <div class="card text-white bg-dark mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="https://avatars.dicebear.com/api/adventurer/{{user.icon}}.svg" class="img-fluid rounded-start" alt="avatar">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+            
+                {% if current_user.is_following(user)%}
+                <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+                <p class="card-text">You can't beat me!</p>
+                <p class="card-text">My Pokemon:</p>
+
+
+                    <a href="/unfollow/{{user.id}}" class="btn btn-danger">End Battle</a>
+                    <a href="/won/{{user.id}}" class="btn btn-danger">Attack</a>
+                {% else %}
+                <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+                <p class="card-text">Would you like to battle?</p> {# {{pokemon.pokemon_name}} #}
+                    <a href="/follow/{{user.id}}" class="btn btn-success">Start Battle</a>
+                {% endif %}
+    
+            </div>
+            </div>
+        </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+

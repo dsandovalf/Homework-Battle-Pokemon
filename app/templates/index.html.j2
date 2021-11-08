@@ -1,0 +1,16 @@
+{% extends 'base.html.j2' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+{% block title %}
+  Pokemon
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Pokeworld!</h1>
+<div class=logo>
+  <img src="https://64.media.tumblr.com/e6699e654a576495557c5c9fde1cb901/tumblr_inline_oqv9elZnvO1qd0gcp_1280.png" class="center img-fluid">
+</div>
+{% endblock %}
